@@ -29,9 +29,86 @@
 		514CF3CD2F42D886003C3C20 /* RoastMeStudyBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoastMeStudyBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		514CF46D2F42D980003C3C20 /* Exceptions for "RoastMeStudyBuddy" folder in "RoastMeStudyBuddyTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				RoastMeStudyBuddy/App/RoastMeStudyBuddyApp.swift,
+				RoastMeStudyBuddy/BUILD_CHECKLIST.md,
+				RoastMeStudyBuddy/Models/FocusEvent.swift,
+				RoastMeStudyBuddy/Models/PersonalityMode.swift,
+				RoastMeStudyBuddy/Models/RoastMessage.swift,
+				RoastMeStudyBuddy/Models/SessionStatistics.swift,
+				RoastMeStudyBuddy/Models/StudySession.swift,
+				RoastMeStudyBuddy/Models/UserPreferences.swift,
+				RoastMeStudyBuddy/PROJECT_SUMMARY.md,
+				RoastMeStudyBuddy/QUICKSTART.md,
+				RoastMeStudyBuddy/README.md,
+				RoastMeStudyBuddy/Services/FocusDetectionService.swift,
+				RoastMeStudyBuddy/Services/PersistenceService.swift,
+				RoastMeStudyBuddy/Services/RoastGenerationService.swift,
+				RoastMeStudyBuddy/Services/SessionManager.swift,
+				RoastMeStudyBuddy/Utilities/Constants.swift,
+				"RoastMeStudyBuddy/Utilities/Extensions/Color+Theme.swift",
+				"RoastMeStudyBuddy/Utilities/Extensions/Date+Extensions.swift",
+				RoastMeStudyBuddy/Views/ActiveSession/ActiveSessionView.swift,
+				RoastMeStudyBuddy/Views/ActiveSession/FocusMeterView.swift,
+				RoastMeStudyBuddy/Views/ActiveSession/RoastFeedView.swift,
+				RoastMeStudyBuddy/Views/ActiveSession/SessionControlsView.swift,
+				RoastMeStudyBuddy/Views/History/HistoryView.swift,
+				RoastMeStudyBuddy/Views/Home/HomeView.swift,
+				RoastMeStudyBuddy/Views/Home/QuickStatsView.swift,
+				RoastMeStudyBuddy/Views/Home/StreakBadgeView.swift,
+				RoastMeStudyBuddy/Views/SessionComplete/SessionCompleteView.swift,
+				RoastMeStudyBuddy/Views/SessionSetup/SessionSetupView.swift,
+				RoastMeStudyBuddy/Views/Settings/SettingsView.swift,
+			);
+			target = 514CF3C22F42D886003C3C20 /* RoastMeStudyBuddyTests */;
+		};
+		514CF46E2F42D980003C3C20 /* Exceptions for "RoastMeStudyBuddy" folder in "RoastMeStudyBuddyUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				RoastMeStudyBuddy/App/RoastMeStudyBuddyApp.swift,
+				RoastMeStudyBuddy/BUILD_CHECKLIST.md,
+				RoastMeStudyBuddy/Models/FocusEvent.swift,
+				RoastMeStudyBuddy/Models/PersonalityMode.swift,
+				RoastMeStudyBuddy/Models/RoastMessage.swift,
+				RoastMeStudyBuddy/Models/SessionStatistics.swift,
+				RoastMeStudyBuddy/Models/StudySession.swift,
+				RoastMeStudyBuddy/Models/UserPreferences.swift,
+				RoastMeStudyBuddy/PROJECT_SUMMARY.md,
+				RoastMeStudyBuddy/QUICKSTART.md,
+				RoastMeStudyBuddy/README.md,
+				RoastMeStudyBuddy/Services/FocusDetectionService.swift,
+				RoastMeStudyBuddy/Services/PersistenceService.swift,
+				RoastMeStudyBuddy/Services/RoastGenerationService.swift,
+				RoastMeStudyBuddy/Services/SessionManager.swift,
+				RoastMeStudyBuddy/Utilities/Constants.swift,
+				"RoastMeStudyBuddy/Utilities/Extensions/Color+Theme.swift",
+				"RoastMeStudyBuddy/Utilities/Extensions/Date+Extensions.swift",
+				RoastMeStudyBuddy/Views/ActiveSession/ActiveSessionView.swift,
+				RoastMeStudyBuddy/Views/ActiveSession/FocusMeterView.swift,
+				RoastMeStudyBuddy/Views/ActiveSession/RoastFeedView.swift,
+				RoastMeStudyBuddy/Views/ActiveSession/SessionControlsView.swift,
+				RoastMeStudyBuddy/Views/History/HistoryView.swift,
+				RoastMeStudyBuddy/Views/Home/HomeView.swift,
+				RoastMeStudyBuddy/Views/Home/QuickStatsView.swift,
+				RoastMeStudyBuddy/Views/Home/StreakBadgeView.swift,
+				RoastMeStudyBuddy/Views/SessionComplete/SessionCompleteView.swift,
+				RoastMeStudyBuddy/Views/SessionSetup/SessionSetupView.swift,
+				RoastMeStudyBuddy/Views/Settings/SettingsView.swift,
+			);
+			target = 514CF3CC2F42D886003C3C20 /* RoastMeStudyBuddyUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		514CF3B62F42D884003C3C20 /* RoastMeStudyBuddy */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				514CF46D2F42D980003C3C20 /* Exceptions for "RoastMeStudyBuddy" folder in "RoastMeStudyBuddyTests" target */,
+				514CF46E2F42D980003C3C20 /* Exceptions for "RoastMeStudyBuddy" folder in "RoastMeStudyBuddyUITests" target */,
+			);
 			path = RoastMeStudyBuddy;
 			sourceTree = "<group>";
 		};
