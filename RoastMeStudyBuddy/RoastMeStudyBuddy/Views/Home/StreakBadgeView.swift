@@ -12,54 +12,105 @@ struct StreakBadgeView: View {
     let goal: Int
     
     var progress: Double {
-        Double(currentStreak) / Double(goal)
+        min(Double(currentStreak) / Double(goal), 1.0)
     }
     
     var body: some View {
-        VStack(spacing: 12) {
+        HStack(spacing: 24) {
+            // Circular Progress Indicator
             ZStack {
+                // Background circle
                 Circle()
-                    .stroke(Color.gray.opacity(0.2), lineWidth: 12)
-                    .frame(width: 120, height: 120)
+                    .stroke(Color.cardElevated, lineWidth: 8)
+                    .frame(width: 100, height: 100)
                 
+                // Progress circle with gradient
                 Circle()
                     .trim(from: 0, to: progress)
                     .stroke(
                         LinearGradient(
-                            colors: [.orange, .red],
+                            colors: [.appPrimary, .appSecondary],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         ),
-                        style: StrokeStyle(lineWidth: 12, lineCap: .round)
+                        style: StrokeStyle(lineWidth: 8, lineCap: .round)
                     )
-                    .frame(width: 120, height: 120)
+                    .frame(width: 100, height: 100)
                     .rotationEffect(.degrees(-90))
-                    .animation(.easeInOut(duration: 1.0), value: progress)
+                    .animation(.spring(response: 0.8, dampingFraction: 0.6), value: progress)
                 
-                VStack {
+                // Center content
+                VStack(spacing: 4) {
                     Image(systemName: "flame.fill")
-                        .font(.title)
-                        .foregroundStyle(.orange)
+                        .font(.system(size: 24, weight: .semibold))
+                        .foregroundStyle(
+                            LinearGradient(
+                                colors: [.appPrimary, .appSecondary],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                    
                     Text("\(currentStreak)")
-                        .font(.system(size: 32, weight: .bold))
-                    Text("day streak")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .font(.system(size: 26, weight: .bold, design: .rounded))
+                        .foregroundColor(.textPrimary)
                 }
             }
             
-            Text("Goal: \(goal) days")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
+            // Streak info
+            VStack(alignment: .leading, spacing: 6) {
+                Text("Day Streak")
+                    .font(.system(size: 16, weight: .semibold, design: .rounded))
+                    .foregroundColor(.textPrimary)
+                
+                Text("Goal: \(goal) days")
+                    .font(.system(size: 14, weight: .medium, design: .rounded))
+                    .foregroundColor(.textSecondary)
+                
+                // Progress bar
+                GeometryReader { geometry in
+                    ZStack(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(Color.cardElevated)
+                            .frame(height: 6)
+                        
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(
+                                LinearGradient(
+                                    colors: [.appPrimary, .appSecondary],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
+                            .frame(width: geometry.size.width * progress, height: 6)
+                            .animation(.spring(response: 0.8, dampingFraction: 0.6), value: progress)
+                    }
+                }
+                .frame(height: 6)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(16)
-        .shadow(radius: 2)
+        .padding(24)
+        .background(Color.cardBackground)
+        .cornerRadius(20)
+        .overlay(
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(Color.cardElevated, lineWidth: 1)
+        )
+        .padding(.horizontal, 24)
     }
 }
 
 #Preview {
-    StreakBadgeView(currentStreak: 3, goal: 7)
-        .padding()
+    ZStack {
+        Color.darkBackground
+            .ignoresSafeArea()
+        
+        VStack(spacing: 20) {
+            StreakBadgeView(currentStreak: 3, goal: 7)
+            StreakBadgeView(currentStreak: 7, goal: 7)
+            StreakBadgeView(currentStreak: 0, goal: 7)
+        }
+    }
+    .preferredColorScheme(.dark)
 }

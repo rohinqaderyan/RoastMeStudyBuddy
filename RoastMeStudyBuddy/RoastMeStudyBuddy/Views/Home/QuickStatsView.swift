@@ -13,35 +13,53 @@ struct QuickStatsView: View {
     let averageFocus: Double
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 20) {
+            // Header
             Text("Today's Progress")
-                .font(.headline)
+                .font(.system(size: 18, weight: .semibold, design: .rounded))
+                .foregroundColor(.textPrimary)
             
-            HStack(spacing: 16) {
+            // Stats Grid - Horizontal with subtle dividers
+            HStack(spacing: 0) {
                 StatCard(
                     value: "\(sessionsToday)",
                     label: "Sessions",
-                    color: .blue
+                    color: .appPrimary
                 )
+                
+                // Divider
+                Rectangle()
+                    .fill(Color.cardElevated)
+                    .frame(width: 1)
+                    .padding(.vertical, 12)
                 
                 StatCard(
                     value: formatTime(focusTimeToday),
                     label: "Focus Time",
-                    color: .green
+                    color: .focusExcellent
                 )
+                
+                // Divider
+                Rectangle()
+                    .fill(Color.cardElevated)
+                    .frame(width: 1)
+                    .padding(.vertical, 12)
                 
                 StatCard(
                     value: "\(Int(averageFocus))%",
                     label: "Avg Focus",
-                    color: .purple
+                    color: .appSecondary
                 )
             }
         }
-        .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(16)
-        .shadow(radius: 2)
-        .padding(.horizontal)
+        .padding(24)
+        .background(Color.cardBackground)
+        .cornerRadius(20)
+        .overlay(
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(Color.cardElevated, lineWidth: 1)
+        )
+        .padding(.horizontal, 24)
     }
     
     private func formatTime(_ seconds: TimeInterval) -> String {
@@ -57,26 +75,35 @@ struct StatCard: View {
     let color: Color
     
     var body: some View {
-        VStack(spacing: 4) {
+        VStack(spacing: 8) {
             Text(value)
-                .font(.title2.bold())
-                .foregroundColor(color)
+                .font(.system(size: 28, weight: .bold, design: .rounded))
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: [color, color.opacity(0.7)],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+            
             Text(label)
-                .font(.caption)
-                .foregroundStyle(.secondary)
+                .font(.system(size: 13, weight: .medium, design: .rounded))
+                .foregroundColor(.textSecondary)
         }
         .frame(maxWidth: .infinity)
-        .padding(.vertical, 12)
-        .background(color.opacity(0.1))
-        .cornerRadius(12)
     }
 }
 
 #Preview {
-    QuickStatsView(
-        sessionsToday: 2,
-        focusTimeToday: 3600,
-        averageFocus: 87.5
-    )
-    .padding()
+    ZStack {
+        Color.darkBackground
+            .ignoresSafeArea()
+        
+        QuickStatsView(
+            sessionsToday: 2,
+            focusTimeToday: 3600,
+            averageFocus: 87.5
+        )
+    }
+    .preferredColorScheme(.dark)
 }
